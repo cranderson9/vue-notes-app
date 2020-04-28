@@ -1,32 +1,119 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <!-- Where toolbar used to be -->
+    <toolbar />
+    <!-- Where note container used to be -->
+    <note-Container/>
     </div>
-    <router-view/>
-  </div>
-</template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+	</template>
+<script>
+import Toolbar from './components/Toolbar.vue';
+import noteContainer from './components/NoteContainer.vue';
+export default {
+  name: 'app',
+  components: {
+    Toolbar,
+    noteContainer
+  }
+};
+</script>
+	<style>
+	/* RESET */
+	* {
+	margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  box-sizing: border-box;
+	}
+	/* LAYOUT */
+	#app {
+	 display: flex;
+	 flex-direction: column;
+	 min-height: 100vh;
+	}
+	.toolbar {
+	 padding: 0.5em;
+	}
+	.toolbar-button, .toolbar-search {
+	 padding: inherit;
+	 border-radius: 0.3em;
+	}
+	.toolbar-search {
+	 float: right;
+	}
+	.note-container {
+	 display: flex;
+	 flex: 1;
+	}
+	.note-selectors {
+	 flex: 0 0 13em;
+	}
+	.note-selector {
+	 padding: 1em;
+	}
+	.note-selector p {
+	 margin: 0;
+	}
+	.note-editor {
+	 display: flex;
+	 flex: 1;
+	 flex-direction: column;
+	}
+	.note-editor-info {
+	 padding: 0.5em;
+	 text-align: center;
+	}
+	.note-editor-input {
+	 display: flex;
+	 flex: 1;
+	 width: 100%;
+	 padding: 0 2em 0 2em;
+	}
+	/* COLORS */
+	* {
+	 color: #454545;
+	 background-color: #FAFAF8;
+	}
+	.toolbar {
+	 background-color: #DCDADC;
+	}
+	.toolbar-button {
+	 background-color: #FFFFFF;
+	}
+	.toolbar-button:active {
+	 background-color: #AAAAAA;
+	}
+	.note-selectors {
+	 border-right: 1px solid #DCDADC;
+	}
+	.note-selector {
+	 border-bottom: 1px solid #DCDADC;
+	}
+	.note-selector.active {
+	 background-color: #FCE18D;
+	}
+	.note-selector-title {
+	 background-color: inherit;
+	}
+	.note-selector-timestamp {
+	 color: #626262;
+	 background-color: inherit;
+	}
+	.note-editor-info {
+	color: #DCDADC;
+	}
+	/* TYPOGRAPHY */
+	body {
+	font-family: sans-serif;
+	}
+	.note-selector-title {
+	font-weight: bold;
+	}
+	.note-selector-timestamp {
+	font-size: 0.7em;
+	}
+	.note-editor, .note-editor-input {
+  font-size: 0.9em;
+	}
+	</style>
